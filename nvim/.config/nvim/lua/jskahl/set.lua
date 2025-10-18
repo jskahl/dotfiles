@@ -30,7 +30,7 @@ vim.opt.scrolloff = 9
 if vim.g.neovide then
     vim.opt.linespace = 13
 
-    local default_font_size = 12
+    local default_font_size = 15
     local font_name = "CaskaydiaCove Nerd Font"
     vim.g.font_size = default_font_size
 

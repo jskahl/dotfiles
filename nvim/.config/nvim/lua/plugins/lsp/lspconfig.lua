@@ -1,71 +1,84 @@
 return {
-    {
-        "neovim/nvim-lspconfig",
-        lazy = false,
-        config = function()
-            local cmp_nvim_lsp = require("cmp_nvim_lsp")
-            local lspconfig = require("lspconfig")
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{
+				"folke/lazydev.nvim",
+				ft = "lua", -- only load on lua files
+				opts = {
+					library = {
+						-- See the configuration section for more details
+						-- Load luvit types when the `vim.uv` word is found
+						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					},
+				},
+			},
+            'saghen/blink.cmp',
+		},
+		lazy = false,
+
+		config = function()
             local util = require("lspconfig.util")
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-            -- Mix NeoVim built-in LSP capabilities with nvim-cmp's for autocomplete
-            local capabilities = vim.tbl_deep_extend(
-                "force",
-                {},
-                vim.lsp.protocol.make_client_capabilities(),
-                cmp_nvim_lsp.default_capabilities()
-            )
+			-- Configure general LSP's
+			vim.lsp.config('html',     { capabilities = capabilities })
+			vim.lsp.config('cssls',    { capabilities = capabilities })
+			vim.lsp.config('jsonls',   { capabilities = capabilities })
+			vim.lsp.config('lua_ls',   { capabilities = capabilities })
+			vim.lsp.config('ast_grep', { capabilities = capabilities })
+			vim.lsp.config('eslint',   { capabilities = capabilities })
+			vim.lsp.config('pylint',   { capabilities = capabilities })
+			vim.lsp.config('vuels',    { capabilities = capabilities })
 
-            -- Configure general LSP's
-            lspconfig.html.setup({ capabilities = capabilities })
-            lspconfig.cssls.setup({ capabilities = capabilities })
-            lspconfig.jsonls.setup({ capabilities = capabilities })
-            lspconfig.lua_ls.setup({ capabilities = capabilities })
-            lspconfig.ast_grep.setup({ capabilities = capabilities })
-            lspconfig.eslint.setup({ capabilities = capabilities })
+			-- Defines root of dir to find Vue LS
+			local root = util.root_pattern("jsconfig.json", "package.json", ".git")(vim.fn.getcwd())
 
-            -- Configure vue_ls
-            lspconfig.volar.setup({ capabilities = capabilities })
+			-- Configure ts_ls to work in Vue
+			if root and vim.fn.filereadable(root .. "/package.json") == 1 then
+				local vue_path = root .. "/node_modules/@vue/typescript-plugin"
+				local ts_path = root .. "/node_modules/typescript/lib"
 
-            -- Defines root of dir to find Vue LS
-            local root = util.root_pattern("jsconfig.json", "package.json", ".git")(vim.fn.getcwd())
+				if vim.fn.isdirectory(vue_path) == 1 then
+					vim.lsp.config('ts_ls', {
+						capabilities = capabilities,
+						root_dir = root,
+						-- Tells ts_ls what to load
+						init_options = {
+							-- Loads vue plugin based on the path provided
+							plugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = vue_path,
+									languages = { "vue" },
+								},
+							},
+							ts_ls = {
+								tsdk = ts_path,
+							},
+						},
+						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+						cmd = { "typescript-language-server", "--stdio" },
+					})
+				end
+			end
 
-            -- Configure ts_ls to work in Vue
-            if root and vim.fn.filereadable(root .. "/package.json") == 1 then
-                local vue_path = root .. "/node_modules/@vue/typescript-plugin"
-                local ts_path = root .. "/node_modules/typescript/lib"
+			vim.lsp.config('tinymist', {
+				capabilities = capabilities,
+				settings = {
+					formatterMode = "typstyle",
+					exportPdf = "onType",
+					semanticTokens = "disable",
+				},
+			})
 
-                if vim.fn.isdirectory(vue_path) == 1 then
-                    lspconfig.ts_ls.setup({
-                        capabilities = capabilities,
-                        root_dir = root,
-                        -- Tells ts_ls what to load
-                        init_options = {
-
-                            -- Loads vue plugin based on the path provided
-                            plugins = {
-                                {
-                                    name = "@vue/typescript-plugin",
-                                    location = vue_path,
-                                    languages = { "vue" },
-                                },
-                            },
-                            ts_ls = {
-                                tsdk = ts_path,
-                            },
-                        },
-                        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-                        cmd = { "typescript-language-server", "--stdio" },
-                    })
-                end
-            end
-
-            -- Keymaps
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-            vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-            vim.keymap.set("n", "<leader>md", vim.lsp.buf.rename, {})
-        end,
-    },
+			-- Keymaps
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+			vim.keymap.set("n", "<leader>md", vim.lsp.buf.rename, {})
+		end,
+	},
 }
