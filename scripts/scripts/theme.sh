@@ -9,8 +9,10 @@ starship="$HOME/.config/starship/starship.toml"
 profile=$(find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-release" | head -n 1)
 
 set_dark() {
+    echo "dark" > /home/j/.cache/current-theme
+
     echo "Alterando wallpaper..."
-    echo "$HOME/pictures/hk_dark.png" > "$HOME/.cache/wallpaper"
+    echo "$HOME/media/wallpapers/cat_pacman.png" > "$HOME/.cache/wallpaper"
     sleep 0.2
 
     echo "Alterando Polybar..."
@@ -34,8 +36,10 @@ set_dark() {
 }
 
 set_light() {
+    echo "light" > /home/j/.cache/current-theme
+
     echo "Alterando wallpaper..."
-    echo "$HOME/pictures/hk_light.jpg" > "$HOME/.cache/wallpaper"
+    echo "$HOME/media/wallpapers/mandelbrot_side_teal.png" > "$HOME/.cache/wallpaper"
     sleep 0.2
 
     echo "Alterando Polybar..."
