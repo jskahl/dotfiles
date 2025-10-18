@@ -1,7 +1,7 @@
 format = """
 $os\
-$username  \
-$directory \
+$username \
+$directory\
 $git_branch \
 $time \
 $cmd_duration \
@@ -45,7 +45,7 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = "  "
 style = "bg:crust"
-format = '[[  $symbol $branch  ](fg:text bg:crust)]($style)'
+format = ' [[  $symbol $branch  ](fg:text bg:crust)]($style)'
 
 [git_status]
 style = "bg:crust"
