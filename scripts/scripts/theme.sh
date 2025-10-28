@@ -12,7 +12,7 @@ set_dark() {
     echo "dark" > /home/j/.cache/current-theme
 
     echo "Alterando wallpaper..."
-    echo "$HOME/media/wallpapers/cat_pacman.png" > "$HOME/.cache/wallpaper"
+    echo "$HOME/media/wallpapers/2-osaka-jade-bg.jpg" > "$HOME/.cache/wallpaper"
     sleep 0.2
 
     echo "Alterando Polybar..."

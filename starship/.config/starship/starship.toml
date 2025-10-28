@@ -1,182 +1,229 @@
+## ░█▀▀░▀█▀░█▀█░█▀▄░█▀▀░█░█░▀█▀░█▀█
+## ░▀▀█░░█░░█▀█░█▀▄░▀▀█░█▀█░░█░░█▀▀
+## ░▀▀▀░░▀░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░░
+## CROSS-SHELL PROMPT
+## The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+
 format = """
-$os\
-$username \
+$hostname\
 $directory\
-$git_branch \
-$time \
-$cmd_duration \
+
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$vcsh\
+$hg_branch\
+$docker_context\
+$package\
+$custom\
+
+$sudo\
+
+$fill\
+$git_branch\
+$git_status\
+$git_commit\
+$cmd_duration\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$shell\
 $line_break\
 $character"""
 
-palette = "catppuccin_frappe"
+palette = "normal"
 
-[os]
-disabled = false
-style = "bg:crust fg:teal"
-
-[os.symbols]
-Windows = ""
-Ubuntu = "󰕈"
-Mint = "󰣭"
-Manjaro = ""
-Linux = "󰌽"
-Android = ""
-Arch = "  󰣇  "
+# Disable the blank line at the start of the prompt
+add_newline = true
 
 [username]
+format = "[](fg:green)[$user](fg:bg bg:green)[](fg:green bg:none)"
 show_always = true
-style_user = "bg:crust fg:text"
-style_root = "bg:crust fg:text"
-format = '[ $user  ]($style)'
 
-[directory]
-style = "bg:crust fg:text"
-format = "[  $path  ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
-
-[git_branch]
-symbol = "  "
-style = "bg:crust"
-format = ' [[  $symbol $branch  ](fg:text bg:crust)]($style)'
-
-[git_status]
-style = "bg:crust"
-format = '[[  ($all_status$ahead_behind )  ](fg:text bg:crust)]($style)'
-
-[time]
+# Second param
+[hostname]
+ssh_only = true 
+format = "[](fg:bg bg:none)[█](fg:fg bg:bg)[$ssh_symbol$hostname](bold bg:fg)[](fg:fg bg:none) "
 disabled = false
-time_format = "%R"
-style = "bg:crust"
-format = '[[   $time  ](fg:text bg:crust)]($style)'
+
+# Third param
+[directory]
+format = "[](fg:bg bg:none)[$path]($style)[█](fg:bg-darker bg:bg-darker)[](fg:green bg:bg)[ ](fg:bg bg:green)[](fg:green bg:none)"
+style = "fg:fg bg:bg bold"
+truncation_length = 3
+truncate_to_repo=false
+read_only = " "
+
+## SECOND LINE/ROW: Prompt
+# Prompt: param 2 └─
+[character]
+success_symbol = "[ ](green bold)"
+error_symbol = "[ ](red bold)"
 
 [line_break]
 disabled = false
 
-[character]
+[fill]
+symbol = ' '
+style = 'bold blue'
+
+[cmd_duration]
+min_time = 1
+format = "[](fg:bg bg:none)[$duration]($style)[](fg:bg bg:bg)[](fg:purple bg:bg)[󱑂 ](fg:bg bg:purple)[](fg:purple bg:none)"
 disabled = false
-success_symbol = '[❯](bold fg:green)'
-error_symbol = '[❯](bold fg:red)'
-vimcmd_symbol = '[❮](bold fg:green)'
-vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
-vimcmd_replace_symbol = '[❮](bold fg:lavender)'
-vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+style = "fg:fg bg:bg bold"
 
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-crust = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-#crust = "#11111b"
 
-[palettes.catppuccin_frappe]
-rosewater = "#f2d5cf"
-flamingo = "#eebebe"
-pink = "#f4b8e4"
-mauve = "#ca9ee6"
-red = "#e78284"
-maroon = "#ea999c"
-peach = "#ef9f76"
-yellow = "#e5c890"
-green = "#a6d189"
-teal = "#81c8be"
-sky = "#99d1db"
-sapphire = "#85c1dc"
-blue = "#8caaee"
-lavender = "#babbf1"
-text = "#c6d0f5"
-subtext1 = "#b5bfe2"
-subtext0 = "#a5adce"
-overlay2 = "#949cbb"
-overlay1 = "#838ba7"
-overlay0 = "#737994"
-surface2 = "#626880"
-surface1 = "#51576d"
-crust = "#414559"
-base = "#303446"
-mantle = "#292c3c"
-#crust = "#232634"
+[git_branch]
+format = "[](fg:bg bg:none)[$branch]($style)[](fg:bg bg:bg)[](fg:blue bg:bg)[](fg:bg bg:blue)[](fg:blue bg:none) "
+style = "fg:fg bg:bg"
+symbol = " "
 
-[palettes.catppuccin_latte]
-rosewater = "#dc8a78"
-flamingo = "#dd7878"
-pink = "#ea76cb"
-mauve = "#8839ef"
-red = "#d20f39"
-maroon = "#e64553"
-peach = "#fe640b"
-yellow = "#df8e1d"
-green = "#40a02b"
-teal = "#179299"
-sky = "#04a5e5"
-sapphire = "#209fb5"
-blue = "#1e66f5"
-lavender = "#7287fd"
-text = "#4c4f69"
-subtext1 = "#5c5f77"
-subtext0 = "#6c6f85"
-overlay2 = "#7c7f93"
-overlay1 = "#8c8fa1"
-overlay0 = "#9ca0b0"
-surface2 = "#acb0be"
-surface1 = "#bcc0cc"
-crust = "#ccd0da"
-base = "#eff1f5"
-mantle = "#e6e9ef"
-#crust = "#dce0e8"
+[git_status]
+format="[](fg:bg bg:none)[$all_status$ahead_behind]($style)[](fg:bg bg:bg)[](fg:green bg:bg)[ ](fg:bg bg:green)[](fg:green bg:none) "
+style = "fg:fg bg:bg"
+conflicted = "="
+ahead =	"⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = " 󰄸 "
+untracked = "?${count}"
+stashed = ""
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = " ${count}"
 
-[palettes.catppuccin_macchiato]
-rosewater = "#f4dbd6"
-flamingo = "#f0c6c6"
-pink = "#f5bde6"
-mauve = "#c6a0f6"
-red = "#ed8796"
-maroon = "#ee99a0"
-peach = "#f5a97f"
-yellow = "#eed49f"
-green = "#a6da95"
-teal = "#8bd5ca"
-sky = "#91d7e3"
-sapphire = "#7dc4e4"
-blue = "#8aadf4"
-lavender = "#b7bdf8"
-text = "#cad3f5"
-subtext1 = "#b8c0e0"
-subtext0 = "#a5adcb"
-overlay2 = "#939ab7"
-overlay1 = "#8087a2"
-overlay0 = "#6e738d"
-surface2 = "#5b6078"
-surface1 = "#494d64"
-crust = "#363a4f"
-base = "#24273a"
-mantle = "#1e2030"
-#crust = "#181926"
+[git_commit]
+format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
+style = "blue"
+
+[git_state]
+rebase = "REBASING"
+merge =	"MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+style =	"yellow"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+
+# # SYMBOLS
+
+[aws]
+symbol = "  "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+# [directory]
+
+[docker_context]
+symbol = " "
+format = "via [$symbol$context]($style) "
+style = "green bold"
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_folders = []
+disabled = false
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[haskell]
+symbol = "λ "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+#pyenv_version_name = true
+format = 'via [${symbol}python (${version} )(\($virtualenv\) )]($style)'
+style = "bold yellow"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+detect_extensions = ["py"]
+version_format = "v${raw}"
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "
+
+[nodejs]
+format = "via [ Node.js $version](bold blue) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+
+# Other languages configurations:
+c.disabled = true
+cmake.disabled = true
+haskell.disabled = true
+python.disabled = true
+ruby.disabled = true
+rust.disabled = true
+perl.disabled = true
+package.disabled = true
+lua.disabled = true
+nodejs.disabled = true
+java.disabled = true
+golang.disabled = true
+
+
+[palettes.normal]
+bg = "#111c18"
+bg-darker = "#111c18"
+fg = "#C1C497"
+green = "#549e6a"
+purple = "#D2689C"
+blue = "#2DD5B7"
+red = "#FF5345"

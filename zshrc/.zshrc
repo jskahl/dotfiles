@@ -22,7 +22,12 @@ alias theme="~/scripts/theme.sh"
 alias work="~/scripts/work.sh"
 alias class="~/scripts/class.sh"
 alias toggle-opacity="/home/j/scripts/opacity-toggle.sh"
+alias rmdir="rm -rf"
 #alias glance="glance --config ~/.config/glance/glance.yml"
+alias ls="lsd"
 
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+# Created by `pipx` on 2025-10-22 20:51:57
+export PATH="$PATH:/home/j/.local/bin"

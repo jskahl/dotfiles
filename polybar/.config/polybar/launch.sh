@@ -17,4 +17,3 @@ for m in $MONITORS; do
   MONITOR=$m polybar -q laptop -c "$DIR/config.ini" &
   MONITOR=$m polybar -q hw -c "$DIR/config.ini" &
 done
-
