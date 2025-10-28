@@ -27,6 +27,9 @@ return {
             end
             builtin.find_files({ cwd = "~/notes" })
         end)
+        vim.keymap.set("n", "<leader>gc", function ()
+            builtin.find_files({ cwd = "~/dotfiles" })
+        end)
 
         telescope.setup({
             defaults = {

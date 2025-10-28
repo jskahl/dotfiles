@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", function() vim.cmd(":Oil") end)
 
 -- anti windows actions below
 vim.keymap.set("n", "<Up>", "<Nop>")

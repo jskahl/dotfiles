@@ -29,6 +29,7 @@ return {
 			vim.lsp.config('ast_grep', { capabilities = capabilities })
 			vim.lsp.config('eslint',   { capabilities = capabilities })
 			vim.lsp.config('pylint',   { capabilities = capabilities })
+            vim.lsp.config('pylsp',    { capabilities = capabilities })
 			vim.lsp.config('vuels',    { capabilities = capabilities })
 
 			-- Defines root of dir to find Vue LS
