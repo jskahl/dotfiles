@@ -1,13 +1,16 @@
 [font]
-normal = { family = "CaskaydiaCove Nerd Font", style = "Regular" }
+normal = { family = "JetBrainsMono Nerd Font", style = "bold" }
+bold = { family = "JetBrainsMono Nerd Font", style = "bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "italic" }
+
 size = 15
-offset = { x = 0, y = 3 }
+#offset = { x = 0, y = 0 }
 
 [general]
 import = [
-    "~/.config/alacritty/themes/frappe.toml"
+    "~/.config/alacritty/themes/current.toml"
 ]
 
 [window]
 padding = { x = 10, y = 10 }
-opacity = 0.3
+opacity = 0.0
