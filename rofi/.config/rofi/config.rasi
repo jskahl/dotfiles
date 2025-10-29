@@ -10,16 +10,12 @@ configuration{
 }
 
 * {
-    bg-col:  #282C34;
-    bg-col-light: #282C34;
-    border-col: #282C34;
-    selected-col: #ABB2BF;
-    blue: #61AFEF;
-    fg-col: #ABB2BF;
-    fg-col2: #282C34;
-    grey: #5C6370;
+    bg-col:  #111C18;
+    bg-col-light: #C1C497;
+    border-col: #111C18;
+    selected-col: #549e6a;
     width: 400;
-    font: "CaskaydiaCove Nerd Font 14";
+    font: "JetBrainsMono Nerd Font 14";
 }
 
 
@@ -28,6 +24,9 @@ window {
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
+    text-color: @bg-col-light;
+    background-color: @bg-col;
+    padding: 0 20px 0 0;
 }
 
 mainbox {
@@ -37,15 +36,17 @@ mainbox {
 inputbar {
     children: [entry];
     background-color: @bg-col;
+    text-color: @bg-col-light;
     border-radius: 5px;
-    padding: 2px;
+    padding: 0px;
 }
 
 entry {
     padding: 6px;
     margin: 20px 0px 0px 10px;
-    text-color: @fg-col;
     background-color: @bg-col;
+    text-color: @bg-col-light;
+    background-color: transparent;
 }
 
 listview {
@@ -57,18 +58,25 @@ listview {
 }
 
 element {
-    padding: 5px;
     background-color: @bg-col;
-    text-color: @fg-col;
+    text-color: @bg-col-light;
+    padding: 5px;
+    border: 0;
+}
+
+element selected {
+    background-color: @selected-col;
+    text-color: @bg-col;
 }
 
 element-icon {
     size: 25px;
+    background-color: transparent;
 }
 
-element selected {
-    background-color:  @selected-col;
-    text-color: @fg-col2;
+element-text {
+    background-color: transparent;
+    text-color: @bg-col-light;
 }
 
 mode-switcher {
@@ -76,14 +84,14 @@ mode-switcher {
 }
 
 button {
-    padding: 2px;
-    background-color: @bg-col-light;
-    text-color: @grey;
+    padding: 0px;
+    background-color: @bg-col;
+    text-color: @bg-col;
     vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 
 button selected {
     background-color: @bg-col;
-    text-color: @blue;
+    text-color: @bg-col;
 }
