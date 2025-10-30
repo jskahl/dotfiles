@@ -1,22 +1,10 @@
 return {
-    --	{
-    --		"windwp/nvim-autopairs",
-    --		event = "InsertEnter",
-    --		config = true,
-    --	},
+    {"norcalli/nvim-colorizer.lua"},
+    {"xiyaowong/transparent.nvim"},
 
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
-        opts = {},
-    },
-
-    {
-        "norcalli/nvim-colorizer.lua",
-    },
-
-    {
-        "xiyaowong/transparent.nvim",
     },
     {
         "S1M0N38/love2d.nvim",
