@@ -15,17 +15,21 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
-alias neofetch='neofetch --source ~/.config/neofetch/asciis/knight.txt'
-alias shutdown='poweroff'
-alias financial="sc-im ~/financial/2025/setembro.sc"
-alias theme="~/scripts/theme.sh"
-alias work="~/scripts/work.sh"
-alias class="~/scripts/class.sh"
-alias toggle-opacity="/home/j/scripts/opacity-toggle.sh"
-alias rmdir="rm -rf"
-#alias glance="glance --config ~/.config/glance/glance.yml"
-alias ls="lsd"
+    # Substitute commands
+    alias neofetch="neofetch --source '$HOME/.config/neofetch/asciis/knight.txt'"
+    alias shutdown="poweroff"
+    alias rmdir="rm -rf"
+    alias ls="lsd"
 
+    # Scripts commands
+    alias theme="$HOME/scripts/theme.sh"
+    alias work="$HOME/scripts/work.sh"
+    alias class="$HOME/scripts/class.sh"
+    alias toggle-opacity="$HOME/scripts/opacity-toggle.sh"
+    alias dmusic="$HOME/scripts/download-music.sh"
+    alias swpp="$HOME/scripts/set-wallpaper.sh"
+
+# Starship
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
