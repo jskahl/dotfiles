@@ -35,59 +35,53 @@ $shell\
 $line_break\
 $character"""
 
-palette = "normal"
+palette = "gruvbox"
 
-# Disable the blank line at the start of the prompt
 add_newline = true
 
 [username]
-format = "[](fg:green)[$user](fg:bg bg:green)[](fg:green bg:none)"
+format = "[](fg:dir)[$user](fg:bg bg:dir)[](fg:dir bg:none)"
 show_always = true
 
-# Second param
 [hostname]
-ssh_only = true 
+ssh_only = true
 format = "[](fg:bg bg:none)[█](fg:fg bg:bg)[$ssh_symbol$hostname](bold bg:fg)[](fg:fg bg:none) "
 disabled = false
 
-# Third param
 [directory]
-format = "[](fg:bg bg:none)[$path]($style)[█](fg:bg-darker bg:bg-darker)[](fg:green bg:bg)[ ](fg:bg bg:green)[](fg:green bg:none)"
+format = "[](fg:bg bg:none)[$path]($style)[█](fg:bg-darker bg:bg-darker)[](fg:dir bg:bg)[ ](fg:bg bg:dir)[](fg:dir bg:none)"
 style = "fg:fg bg:bg bold"
 truncation_length = 3
-truncate_to_repo=false
+truncate_to_repo = false
 read_only = " "
 
-## SECOND LINE/ROW: Prompt
-# Prompt: param 2 └─
 [character]
-success_symbol = "[ ](green bold)"
-error_symbol = "[ ](red bold)"
+success_symbol = "[ ](dir bold)"
+error_symbol = "[ ](time2 bold)"   # red → time2
 
 [line_break]
 disabled = false
 
 [fill]
-symbol = ' '
-style = 'bold blue'
+symbol = " "
+style = "bold time"                 # blue → time
 
 [cmd_duration]
 min_time = 1
-format = "[](fg:bg bg:none)[$duration]($style)[](fg:bg bg:bg)[](fg:purple bg:bg)[󱑂 ](fg:bg bg:purple)[](fg:purple bg:none)"
+format = "[](fg:bg bg:none)[$duration]($style)[](fg:bg bg:bg)[](fg:time bg:bg)[󱑂 ](fg:bg bg:time)[](fg:time bg:none)"
 disabled = false
 style = "fg:fg bg:bg bold"
 
-
 [git_branch]
-format = "[](fg:bg bg:none)[$branch]($style)[](fg:bg bg:bg)[](fg:blue bg:bg)[](fg:bg bg:blue)[](fg:blue bg:none) "
+format = "[](fg:bg bg:none)[$branch]($style)[](fg:bg bg:bg)[](fg:git bg:bg)[](fg:bg bg:git)[](fg:git bg:none) "
 style = "fg:fg bg:bg"
 symbol = " "
 
 [git_status]
-format="[](fg:bg bg:none)[$all_status$ahead_behind]($style)[](fg:bg bg:bg)[](fg:green bg:bg)[ ](fg:bg bg:green)[](fg:green bg:none) "
+format = "[](fg:bg bg:none)[$all_status$ahead_behind]($style)[](fg:bg bg:bg)[](fg:git bg:bg)[ ](fg:bg bg:git)[](fg:git bg:none) "
 style = "fg:fg bg:bg"
 conflicted = "="
-ahead =	"⇡${count}"
+ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 up_to_date = " 󰄸 "
@@ -100,111 +94,33 @@ deleted = " ${count}"
 
 [git_commit]
 format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
-style = "blue"
+style = "git"
 
 [git_state]
 rebase = "REBASING"
-merge =	"MERGING"
+merge = "MERGING"
 revert = "REVERTING"
 cherry_pick = "CHERRY-PICKING"
 bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
-style =	"yellow"
+style = "git"
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
-
-# # SYMBOLS
-
-[aws]
-symbol = "  "
-
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
-
-# [directory]
 
 [docker_context]
 symbol = " "
 format = "via [$symbol$context]($style) "
-style = "green bold"
+style = "dir bold"
 only_with_files = true
 detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
 detect_folders = []
 disabled = false
 
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[golang]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[haskell]
-symbol = "λ "
-
-[memory_usage]
-symbol = " "
-
-[nim]
-symbol = " "
-
-[nix_shell]
-symbol = " "
-
-[package]
-symbol = " "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[python]
-symbol = " "
-#pyenv_version_name = true
-format = 'via [${symbol}python (${version} )(\($virtualenv\) )]($style)'
-style = "bold yellow"
-pyenv_prefix = "venv "
-python_binary = ["./venv/bin/python", "python", "python3", "python2"]
-detect_extensions = ["py"]
-version_format = "v${raw}"
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = " "
-
-[scala]
-symbol = " "
-
-[shlvl]
-symbol = " "
-
-[swift]
-symbol = "ﯣ "
-
 [nodejs]
-format = "via [ Node.js $version](bold blue) "
+format = "via [ Node.js $version](bold time) "    # blue → time
 detect_files = ["package.json", ".node-version"]
 detect_folders = ["node_modules"]
 
-# Other languages configurations:
 c.disabled = true
 cmake.disabled = true
 haskell.disabled = true
@@ -219,11 +135,112 @@ java.disabled = true
 golang.disabled = true
 
 
-[palettes.normal]
-bg = "#111c18"
+# ─────────────────────────
+# Themes
+# ─────────────────────────
+
+# ─────────────────────────
+# osaka (organic/earthy)
+# ─────────────────────────
+[palettes.osaka]
+bg        = "#111c18"
 bg-darker = "#111c18"
-fg = "#C1C497"
-green = "#549e6a"
-purple = "#D2689C"
-blue = "#2DD5B7"
-red = "#FF5345"
+fg        = "#c1c497"
+dir       = "#549e6a"   # green
+git       = "#d2359c"   # pink
+time      = "#2dd5b7"   # teal
+time2     = "#ff5345"   # red
+
+[palettes.osaka-light]
+bg        = "#f6f4eb"
+bg-darker = "#f6f4eb"
+fg        = "#2c332d"
+dir       = "#3f8e64"
+git       = "#c779a4"
+time      = "#22b39a"
+time2     = "#c84e48"
+
+# ─────────────────────────
+# catppuccin (pastel / soft highlights)
+# ─────────────────────────
+[palettes.catppuccin]
+bg        = "#303446"
+bg-darker = "#303446"
+fg        = "#c6d0f5"
+dir       = "#ca9ee6"  # soft pink
+git       = "#a6d189"  # soft green
+time      = "#8caaee"  # pastel blue
+time2     = "#e78284"  # gentle red
+
+[palettes.catppuccin-light]
+bg        = "#eff1f5"
+bg-darker = "#eff1f5"
+fg        = "#4c4f69"
+dir       = "#ea76cb"
+git       = "#40a02b"
+time      = "#1e66f5"
+time2     = "#d20f39"
+
+# ─────────────────────────
+# nord (cool, frozen)
+# ─────────────────────────
+[palettes.nord]
+bg        = "#2e3440"
+bg-darker = "#2e3440"
+fg        = "#eceff4"
+dir       = "#88C0D0"  # icy blue
+git       = "#b48ead"  # frost purple
+time      = "#a3be8c"  # soft green
+time2     = "#bf616a"  # nord red
+
+[palettes.nord-light]
+bg        = "#eceff4"
+bg-darker = "#eceff4"
+fg        = "#2e3440"
+dir       = "#88C0D0"
+git       = "#a27ba5"
+time      = "#8ca97e"
+time2     = "#bf616a"
+
+# ─────────────────────────
+# gruvbox (warm, retro)
+# ─────────────────────────
+[palettes.gruvbox]
+bg        = "#171717"
+bg-darker = "#171717"
+fg        = "#d4be98"
+dir       = "#FABD2F"  # olive/yellowish
+git       = "#ea6962"  # warm red
+time      = "#7daea3"  # muted aqua
+time2     = "#d3869b"  # muted purple
+
+[palettes.gruvbox-light]
+bg        = "#dbcd95"
+bg-darker = "#dbcd95"
+fg        = "#3c3836"
+dir       = "#D79921"
+git       = "#9d0006"
+time      = "#076678"
+time2     = "#8f3f71"
+
+# ─────────────────────────
+# tokyo night (vivid neon)
+# ─────────────────────────
+[palettes.tokyo]
+bg        = "#1a1b26"
+bg-darker = "#1a1b26"
+fg        = "#a9b1d6"
+dir       = "#9D7CD8"  # neon lime
+git       = "#ad8ee6"  # neon purple
+time      = "#7aa2f7"  # electric blue
+time2     = "#f7768e"  # vivid red
+
+[palettes.tokyo-light]
+bg        = "#e1e2e7"
+bg-darker = "#e1e2e7"
+fg        = "#4c505e"
+dir       = "#9854f1"
+git       = "#9854f1"
+time      = "#2e7de9"
+time2     = "#f52a65"
+
