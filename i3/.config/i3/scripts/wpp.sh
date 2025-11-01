@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Get wallpaper
-wallpaper=$(cat $HOME/.cache/wallpaper)
+wallpaper=$(cat $HOME/.cache/current-wallpaper)
 
 # Set wallpaper
-feh --bg-scale $wallpaper
+feh --bg-fill $wallpaper
