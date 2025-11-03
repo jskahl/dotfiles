@@ -20,6 +20,7 @@ source $ZSH/oh-my-zsh.sh
     alias shutdown="poweroff"
     alias rmdir="rm -rf"
     alias ls="lsd"
+    alias copilot="copilot --banner"
 
     # Scripts commands
     alias theme="$HOME/scripts/theme.sh"
