@@ -6,70 +6,74 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: false;
-    sidebar-mode: true;
+    sidebar-mode: false;
 }
 
 * {
-    bg-col:  #282C34;
-    bg-col-light: #282C34;
-    border-col: #282C34;
-    selected-col: #ABB2BF;
-    blue: #61AFEF;
-    fg-col: #ABB2BF;
-    fg-col2: #282C34;
-    grey: #5C6370;
+    bg-col: #121212;
+    text: #FFFFFF;
     width: 400;
-    font: "CaskaydiaCove Nerd Font 14";
+    font: "JetBrainsMono Nerd Font 14";
 }
 
-
 window {
-    height: 500px;
+    height: 300px;
     border: 3px;
-    border-color: @border-col;
-    background-color: @bg-col;
+    background-color: transparent;
 }
 
 mainbox {
-    background-color: @bg-col;
+    background-color: transparent;
 }
 
 inputbar {
     children: [entry];
-    background-color: @bg-col;
-    border-radius: 5px;
-    padding: 2px;
+    background-color: transparent;
 }
 
 entry {
     padding: 6px;
-    margin: 20px 0px 0px 10px;
-    text-color: @fg-col;
-    background-color: @bg-col;
+    margin: 5px 0px 0px 10px;
+    text-color: @text;
+    background-color: transparent;
+    border: 0px;
 }
 
 listview {
-    border: 0px 0px 0px;
+    border: 0px;
     padding: 6px 0px 0px;
     margin: 10px 0px 0px 20px;
     lines: 6;
-    background-color: @bg-col;
+    background-color: transparent;
 }
 
 element {
     padding: 5px;
-    background-color: @bg-col;
-    text-color: @fg-col;
+    text-color: @text;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: @text;
 }
 
 element-icon {
     size: 25px;
+    background-color: transparent;
 }
 
 element selected {
-    background-color:  @selected-col;
-    text-color: @fg-col2;
+    background-color: rgba(255,255,255,0.15);
+    text-color: @text;
+    border-radius: 5px;
 }
+
+element-text selected {
+    background-color: transparent;
+    text-color: @text;
+}
+
 
 mode-switcher {
     spacing: 0;
@@ -77,13 +81,12 @@ mode-switcher {
 
 button {
     padding: 2px;
-    background-color: @bg-col-light;
-    text-color: @grey;
-    vertical-align: 0.5;
-    horizontal-align: 0.5;
+    background-color: transparent;
+    text-color: transparent;
 }
 
 button selected {
-    background-color: @bg-col;
-    text-color: @blue;
+    background-color: transparent;
+    text-color: transparent;
 }
+
