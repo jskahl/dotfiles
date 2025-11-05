@@ -90,6 +90,20 @@ makechanges() {
         # Restart i3
         i3-msg restart > /dev/null
     fi
+
+
+
+
+    # Reload theme in all running Neovim instances
+    if command -v nvr &> /dev/null; then
+        sockets=$(ls /run/user/$UID/nvim.*.* 2>/dev/null)
+    
+        if [ -n "$sockets" ]; then
+            for sock in $sockets; do
+                nvr --nostart --servername "$sock" --remote-send '<Esc>:luafile ~/.config/nvim/lua/theme.lua<CR>'
+            done
+        fi
+    fi
 }
 
 if [ "$1" = "dark" ]; then
