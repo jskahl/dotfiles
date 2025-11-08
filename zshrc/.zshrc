@@ -29,6 +29,7 @@ source $ZSH/oh-my-zsh.sh
     alias toggle-opacity="$HOME/scripts/opacity-toggle.sh"
     alias dmusic="$HOME/scripts/download-music.sh"
     alias swpp="$HOME/scripts/set-wallpaper.sh"
+    alias ai-search="$HOME/scripts/search-with-ai.sh"
 
 # Starship
 eval "$(starship init zsh)"
@@ -36,3 +37,10 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # Created by `pipx` on 2025-10-22 20:51:57
 export PATH="$PATH:/home/j/.local/bin"
+
+# bun completions
+[ -s "/home/j/.bun/_bun" ] && source "/home/j/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
