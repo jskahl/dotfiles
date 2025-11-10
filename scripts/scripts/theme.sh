@@ -64,8 +64,12 @@ makechanges() {
         # Change neovim theme
         sed -i "s/^local current_theme = \".*\"$/local current_theme = \"$1\"/" "$HOME/.config/nvim/lua/theme.lua"
 
+        # Change dmenu theme
+        cat $HOME/scripts/dmenu/themes/$1.sh > $HOME/scripts/dmenu/themes/current.sh
+
         # Restart i3
         i3-msg restart > /dev/null
+
 
     elif [ "$CurrentThemeTone" = "light" ]; then
 
@@ -86,6 +90,9 @@ makechanges() {
 
         # Change neovim theme
         sed -i "s/^local current_theme = \".*\"$/local current_theme = \"${1}-light\"/" "$HOME/.config/starship/starship.toml"
+
+        # Change dmenu theme
+        cat $HOME/scripts/dmenu/themes/$1-light.sh > $HOME/scripts/dmenu/themes/current.sh
 
         # Restart i3
         i3-msg restart > /dev/null
