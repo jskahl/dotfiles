@@ -1,0 +1,68 @@
+#!/bin/sh
+
+sudo
+music_dir="/home/j/media/HDD/musics"
+
+. "/home/j/scripts/dmenu/themes/current.sh"
+
+# Function found in https://github.com/dylanaraps/pure-bash-bible
+# shellcheck disable=SC2086,SC2048
+trim_all() {
+    # Usage: trim_all "   example   string    "
+    set -f
+    set -- $*
+    printf '%s\n' "$*"
+    set +f
+}
+ 
+directory=$(
+    printf "%s\n" "" \
+    | \
+    dmenu -h 40 -c -i -l 0 -fn 'JetBrainsMono Nerd font-15' \
+    -nb "$DMENU_NB" \
+    -nf "$DMENU_NF" \
+    -sb "$DMENU_SB" \
+    -sf "$DMENU_SF" \
+    -p "Enter directory name:"
+)
+
+directory=$(trim_all "$directory")
+# Checks if directory is empty
+if [ -z "$directory" ]; then
+    exit 0
+fi
+
+
+link_provided=$(
+    printf "%s\n" "" \
+    | \
+    dmenu -h 40 -c -i -l 0 -fn 'JetBrainsMono Nerd font-15' \
+    -nb "$DMENU_NB" \
+    -nf "$DMENU_NF" \
+    -sb "$DMENU_SB" \
+    -sf "$DMENU_SF" \
+    -p "Enter download link:"
+)
+
+link_provided=$(trim_all "$link_provided")
+# Checks if directory is empty
+if [ -z "$link_provided" ]; then
+    exit 0
+fi
+
+function download_music() {
+    cd "$music_dir/$directory"
+    link=$1
+
+    . "/home/j/scripts/download-music.sh" "$link" > /dev/null 2>&1
+    mpc update && mpc rescan > /dev/null 2>&1
+    notify-send "Download completed! Saved in '$directory"
+}
+
+dir_exists=$(ls "$music_dir/$directory")
+if [ -z "$dir_exists" ]; then
+    mkdir "$music_dir/$directory" -p
+    download_music "$link_provided"
+else
+    download_music "$link_provided"
+fi
