@@ -18,12 +18,9 @@ trim_all() {
 directory=$(
     printf "%s\n" "" \
     | \
-    dmenu -h 40 -c -i -l 0 -fn 'JetBrainsMono Nerd font-15' \
-    -nb "$DMENU_NB" \
-    -nf "$DMENU_NF" \
-    -sb "$DMENU_SB" \
-    -sf "$DMENU_SF" \
-    -p "Enter directory name:"
+    . "$HOME/scripts/dmenu/dmenu.sh" \
+    -p "Enter directory name:" \
+    -l 0
 )
 
 directory=$(trim_all "$directory")
