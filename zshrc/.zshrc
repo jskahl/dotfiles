@@ -21,14 +21,15 @@ source $ZSH/oh-my-zsh.sh
     alias rmdir="rm -rf"
     alias ls="lsd"
     alias copilot="copilot --banner"
+    alias dmenu="$HOME/scripts/dmenu/dmenu.sh"
 
     # Scripts commands
-    alias theme="$HOME/scripts/theme.sh"
-    alias work="$HOME/scripts/work.sh"
-    alias class="$HOME/scripts/class.sh"
-    alias toggle-opacity="$HOME/scripts/opacity-toggle.sh"
+    alias theme="$HOME/scripts/theme/theme.sh"
+    alias work="$HOME/scripts/flow/work.sh"
+    alias class="$HOME/scripts/flow/class.sh"
+    alias toggle-opacity="$HOME/scripts/flow/opacity-toggle.sh"
     alias dmusic="$HOME/scripts/download-music.sh"
-    alias swpp="$HOME/scripts/set-wallpaper.sh"
+    alias swpp="$HOME/scripts/theme/set-wallpaper.sh"
     alias ai-search="$HOME/scripts/search-with-ai.sh"
 
 # Starship
