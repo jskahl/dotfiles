@@ -90,16 +90,12 @@ makechanges() {
         cat $HOME/scripts/dmenu/themes/$1.sh > $HOME/scripts/dmenu/themes/current.sh
 
         # Change dunst theme
-        apply_dunst_theme "$CurrentNewTheme"
+        apply_dunst_theme "$CurrentTheme"
 
         # Restart i3
         i3-msg restart > /dev/null
 
     elif [ "$CurrentThemeTone" = "light" ]; then
-        # Change dunst theme
-        sed -i "/background = \${/c\\background = \${${1}_light.background}" "$HOME/.config/dunst/dunstrc"
-        sed -i "/foreground = \${/c\\foreground = \${${1}_light.foreground}" "$HOME/.config/dunst/dunstrc"
-
         # Changes wallpaper
         echo "$HOME/media/wallpapers/$1/$CurrentThemeTone/1-$1.png" > "$HOME/.cache/current-wallpaper"
         feh --bg-fill "$HOME/media/wallpapers/$1/$CurrentThemeTone/1-$1.png"
@@ -121,10 +117,8 @@ makechanges() {
         # Change dmenu theme
         cat $HOME/scripts/dmenu/themes/$1-light.sh > $HOME/scripts/dmenu/themes/current.sh
 
-        sleep 0.5
-
         # Change dunst theme
-        apply_dunst_theme "$CurrentNewTheme"
+        apply_dunst_theme "${CurrentTheme}light"
 
         # Restart i3
         i3-msg restart > /dev/null
