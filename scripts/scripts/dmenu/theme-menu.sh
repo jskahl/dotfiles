@@ -9,6 +9,7 @@ input=$(
     " dark" " light" \
     | \
     . "$HOME/scripts/dmenu/dmenu.sh" \
+    -l 7 \
     ) 
 
 change_theme() {

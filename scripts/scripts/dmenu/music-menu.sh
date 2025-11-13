@@ -4,9 +4,10 @@
  
 action=$(
     printf "%s\n" \
-    " Play" " Pause" "󰒭 Next" " Pick music" "󰀥 Pick album" "󰃢 Clear queue" " Crop queue" \
+    " Play" " Pause" "󰒭 Next" " Pick music" "󰀥 Pick album" "󰤺 Pick from queue" "󰃢 Clear queue" " Crop queue" \
     | \
     . "$HOME/scripts/dmenu/dmenu.sh" \
+    -l 8 \
     ) 
 
 pick_music() {
@@ -16,7 +17,8 @@ pick_music() {
     | \
     sed 's#^/home/j/media/HDD/musics/##' \
     | \
-    . "$HOME/scripts/dmenu/dmenu.sh" 
+    . "$HOME/scripts/dmenu/dmenu.sh" \
+    -l 10 \
     )
 
     # If input is empty exit the script
@@ -40,7 +42,8 @@ pick_album() {
     | \
     sed 's#^/home/j/media/HDD/musics/##' \
     | \
-    . "$HOME/scripts/dmenu/dmenu.sh" 
+    . "$HOME/scripts/dmenu/dmenu.sh" \
+    -l 10 \
     )
 
     # If input is empty exit the script
@@ -57,6 +60,28 @@ pick_album() {
     fi
 }
 
+picom_from_queue() {
+    music="$(
+        mpc playlist -f "%position%) %title%" \
+        | \
+        . "$HOME/scripts/dmenu/dmenu.sh" \
+        -l 10 \
+    )"
+
+    # If input is empty exit the script
+    if [ -z "$music" ]; then
+        exit 0
+    fi
+
+    mpc pause
+    # Take only the first character (queue position)
+    music_position=${music:0:1}
+    mpc play $music_position
+    mpc play
+
+    notify-send " Playing ${music:3}"
+}
+
 # Execute selected action
 case $action in 
     " Play") mpc play && notify-send " Playing $(mpc current)" ;;
@@ -66,7 +91,6 @@ case $action in
     " Crop queue") mpc crop && notify-send " Music queue cropped" ;;
     " Pick music") pick_music ;;
     "󰀥 Pick album") pick_album ;;
-    "") 
-        exit 0
-        ;;
+    "󰤺 Pick from queue") picom_from_queue ;;
+    *) exit 0 ;;
 esac

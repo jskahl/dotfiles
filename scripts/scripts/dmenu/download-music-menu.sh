@@ -33,12 +33,9 @@ fi
 link_provided=$(
     printf "%s\n" "" \
     | \
-    dmenu -h 40 -c -i -l 0 -fn 'JetBrainsMono Nerd font-15' \
-    -nb "$DMENU_NB" \
-    -nf "$DMENU_NF" \
-    -sb "$DMENU_SB" \
-    -sf "$DMENU_SF" \
-    -p "Enter download link:"
+    . "$HOME/scripts/dmenu/dmenu.sh" \
+    -p "Download link: " \
+    -l 0
 )
 
 link_provided=$(trim_all "$link_provided")
