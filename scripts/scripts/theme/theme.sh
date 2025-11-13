@@ -14,6 +14,28 @@ CurrentThemeTone="$(cat $HOME/.cache/current-tone)"
 
 profile=$(find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-release" | head -n 1)
 
+apply_dunst_theme() {
+    theme="$1"
+
+    # Extract bg and fg from the theme section
+    bg=$(awk -F\" "/^\[$theme\]/{flag=1;next}/^\[/{flag=0}flag && /bg =/ {print \$2}" ~/.config/dunst/dunstrc)
+    fg=$(awk -F\" "/^\[$theme\]/{flag=1;next}/^\[/{flag=0}flag && /fg =/ {print \$2}" ~/.config/dunst/dunstrc)
+
+    # Safety check
+    if [ -z "$bg" ] || [ -z "$fg" ]; then
+        notify-send "Dunst theme error" "Theme '$theme' not found or missing bg/fg."
+        return
+    fi
+
+    # Update the [current] block
+    sed -i "/^\[current\]/,/^\[/{s/^    background = .*/    background = \"$bg\"/}" ~/.config/dunst/dunstrc
+    sed -i "/^\[current\]/,/^\[/{s/^    foreground = .*/    foreground = \"$fg\"/}" ~/.config/dunst/dunstrc
+
+    # Restart Dunst
+    pkill dunst
+    dunst -conf ~/.config/dunst/dunstrc &
+}
+
 changetheme() {
     case "$1" in
         osaka) 
@@ -67,11 +89,16 @@ makechanges() {
         # Change dmenu theme
         cat $HOME/scripts/dmenu/themes/$1.sh > $HOME/scripts/dmenu/themes/current.sh
 
+        # Change dunst theme
+        apply_dunst_theme "$CurrentNewTheme"
+
         # Restart i3
         i3-msg restart > /dev/null
 
-
     elif [ "$CurrentThemeTone" = "light" ]; then
+        # Change dunst theme
+        sed -i "/background = \${/c\\background = \${${1}_light.background}" "$HOME/.config/dunst/dunstrc"
+        sed -i "/foreground = \${/c\\foreground = \${${1}_light.foreground}" "$HOME/.config/dunst/dunstrc"
 
         # Changes wallpaper
         echo "$HOME/media/wallpapers/$1/$CurrentThemeTone/1-$1.png" > "$HOME/.cache/current-wallpaper"
@@ -94,12 +121,15 @@ makechanges() {
         # Change dmenu theme
         cat $HOME/scripts/dmenu/themes/$1-light.sh > $HOME/scripts/dmenu/themes/current.sh
 
+        sleep 0.5
+
+        # Change dunst theme
+        apply_dunst_theme "$CurrentNewTheme"
+
         # Restart i3
         i3-msg restart > /dev/null
+
     fi
-
-
-
 
     # Reload theme in all running Neovim instances
     if command -v nvr &> /dev/null; then
@@ -144,5 +174,3 @@ else
     changetheme $1
     makechanges $CurrentNewTheme
 fi
-
-
