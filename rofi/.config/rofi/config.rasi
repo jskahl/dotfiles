@@ -1,92 +1,89 @@
-configuration{
-    icon-theme: "Oranchelo";
-    show-icons: true;
-    terminal: "alacritty";
-    drun-display-format: "{icon} {name}";
-    location: 0;
-    disable-history: false;
-    hide-scrollbar: false;
-    sidebar-mode: false;
-}
+@import "/home/j/.config/rofi/themes/current.rasi"
 
 * {
-    bg-col: #121212;
-    text: #FFFFFF;
-    width: 400;
-    font: "JetBrainsMono Nerd Font 14";
+    font: "JetBrainsMono Nerd Font 15";
 }
+
 
 window {
-    height: 300px;
-    border: 3px;
-    background-color: transparent;
-}
-
-mainbox {
-    background-color: transparent;
-}
-
-inputbar {
-    children: [entry];
-    background-color: transparent;
-}
-
-entry {
-    padding: 6px;
-    margin: 5px 0px 0px 10px;
-    text-color: @text;
-    background-color: transparent;
-    border: 0px;
-}
-
-listview {
-    border: 0px;
-    padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
-    lines: 6;
-    background-color: transparent;
-}
-
-element {
-    padding: 5px;
-    text-color: @text;
-    background-color: transparent;
-}
-
-element-text {
-    background-color: transparent;
-    text-color: @text;
-}
-
-element-icon {
-    size: 25px;
-    background-color: transparent;
-}
-
-element selected {
-    background-color: rgba(255,255,255,0.15);
-    text-color: @text;
+    width: 942px;
+    height: 500px;
+    background-color: @background;
+    border: 0;
     border-radius: 5px;
 }
 
-element-text selected {
+mainbox {
+    spacing: 15px;
+    padding: 30px;
+    orientation: horizontal;
+    children: [ "imagebox", "rightbox" ];
+}
+
+imagebox {
     background-color: transparent;
-    text-color: @text;
+    background-image: url("~/.cache/cover.jpg", height);
+    border-radius: 4px;
+}
+
+rightbox {
+    orientation: vertical;
+    children: ["textbox", "inputbar", "listview"];
+    spacing: 10px;
 }
 
 
-mode-switcher {
-    spacing: 0;
+listview {
+    spacing: 5px;
+    border: 0;
+    scrollbar: false;
+    padding: 6px 0px;
 }
 
-button {
-    padding: 2px;
+
+textbox {
+    content: "";
+    text-color: #FFFFFF;
+    expand: false;
+    padding: 2px 2px;
+    text-color: @text-color;
+}
+
+
+inputbar {
+    padding: 8px 0px;
+    children: ["entry"];
+}
+
+entry {
+    text-color: #FFFFFF;
+    placeholder: "";
+}
+
+element {
+    enabled: true;
+    padding: 4px 12px;
+    border-color: @selected;
     background-color: transparent;
-    text-color: transparent;
+    text-color: @foreground;
+    cursor: pointer;
 }
 
-button selected {
+element normal.normal,
+element alternate.normal {
     background-color: transparent;
-    text-color: transparent;
+    text-color: @text-color;
 }
 
+element selected.normal {
+    background-color: @foreground;
+    text-color: @background;
+    border-radius: 4px;
+}
+
+prompt,
+textbox-prompt-colon,
+case-indicator,
+textbox-num-rows {
+    enabled: false;
+}
