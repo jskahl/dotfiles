@@ -10,12 +10,13 @@ input=$(
     | \
     . "$HOME/scripts/dmenu/dmenu.sh" \
     -l 7 \
+    -c \
     ) 
 
 change_theme() {
     theme_name=$1
     $HOME/scripts/theme/theme.sh "$theme_name"
-    notify-send "Theme switched to $theme_name"
+    notify-send -t 1000 "Theme switched to $theme_name"
 }
 
 # Execute selected action

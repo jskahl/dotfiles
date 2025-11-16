@@ -16,11 +16,12 @@ trim_all() {
 }
  
 directory=$(
-    printf "%s\n" "" \
+    printf "" \
     | \
     . "$HOME/scripts/dmenu/dmenu.sh" \
     -p "Enter directory name:" \
-    -l 0
+    -l 0 \
+    -b \
 )
 
 directory=$(trim_all "$directory")
@@ -31,11 +32,12 @@ fi
 
 
 link_provided=$(
-    printf "%s\n" "" \
+    printf "" \
     | \
     . "$HOME/scripts/dmenu/dmenu.sh" \
     -p "Download link: " \
-    -l 0
+    -l 0 \
+    -b \
 )
 
 link_provided=$(trim_all "$link_provided")
