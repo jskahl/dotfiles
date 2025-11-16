@@ -13,4 +13,4 @@ import = [
 
 [window]
 padding = { x = 10, y = 10 }
-opacity = 0.0
+#opacity = 0.0

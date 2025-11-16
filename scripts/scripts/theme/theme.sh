@@ -92,6 +92,9 @@ makechanges() {
         # Change dunst theme
         apply_dunst_theme "$CurrentTheme"
 
+        # Change rofi theme
+        cat $HOME/.config/rofi/themes/$1.rasi > $HOME/.config/rofi/themes/current.rasi
+
         # Restart i3
         i3-msg restart > /dev/null
 
@@ -119,6 +122,9 @@ makechanges() {
 
         # Change dunst theme
         apply_dunst_theme "${CurrentTheme}light"
+
+        # Change rofi theme
+        cat $HOME/.config/rofi/themes/$1-light.rasi > $HOME/.config/rofi/themes/current.rasi
 
         # Restart i3
         i3-msg restart > /dev/null

@@ -3,14 +3,14 @@
 #          config          #
 ############################
 
-export ZSH="$HOME/.oh-my-zsh"
-
 plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
     zsh-nvm-lazy-load 
 )
+
+export ZSH="$HOME/.oh-my-zsh"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,3 +45,5 @@ export PATH="$PATH:/home/j/.local/bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+zprof

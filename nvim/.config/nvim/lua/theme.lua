@@ -1,4 +1,4 @@
-local current_theme = "gruvbox"
+local current_theme = "osaka"
 local current_tone = "dark"
 
 if current_tone == "dark" then
