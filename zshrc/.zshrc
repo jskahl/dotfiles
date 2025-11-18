@@ -3,19 +3,26 @@
 #          config          #
 ############################
 
-plugins=(
-	git
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-    zsh-nvm-lazy-load 
-)
 
-export ZSH="$HOME/.oh-my-zsh"
+zstyle ':completion:*' menu select
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 
-source $ZSH/oh-my-zsh.sh
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+
+setopt appendhistory
+setopt incappendhistory
+setopt sharehistory
+setopt histignoredups
+
+
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 
 # Aliases
-    # Substitute commands
+
+    # Substitions
     alias neofetch="neofetch --source '$HOME/.config/neofetch/asciis/knight.txt'"
     alias shutdown="poweroff"
     alias rmdir="rm -rf"
@@ -32,6 +39,7 @@ source $ZSH/oh-my-zsh.sh
     alias swpp="$HOME/scripts/theme/set-wallpaper.sh"
     alias ai-search="$HOME/scripts/search-with-ai.sh"
 
+
 # Starship
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
@@ -46,4 +54,7 @@ export PATH="$PATH:/home/j/.local/bin"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-zprof
+# --- Plugins (order matters!) ---
+source ~/.local/src/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.local/src/zsh-nvm-lazy-load/zsh-nvm-lazy-load.plugin.zsh
+source ~/.local/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
