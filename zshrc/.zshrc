@@ -58,3 +58,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 source ~/.local/src/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.local/src/zsh-nvm-lazy-load/zsh-nvm-lazy-load.plugin.zsh
 source ~/.local/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+cat ~/notes/tasks.md

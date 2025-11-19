@@ -35,7 +35,7 @@ $shell\
 $line_break\
 $character"""
 
-palette = "osaka"
+palette = "catppuccin"
 
 add_newline = true
 
@@ -164,8 +164,8 @@ time2     = "#c84e48"
 # catppuccin (pastel / soft highlights)
 # ─────────────────────────
 [palettes.catppuccin]
-bg        = "#303446"
-bg-darker = "#303446"
+bg        = "#212335"
+bg-darker = "#212335"
 fg        = "#c6d0f5"
 dir       = "#ca9ee6"  # soft pink
 git       = "#a6d189"  # soft green
