@@ -8,9 +8,9 @@ fi
 
 action=$(
     printf "%s\n" \
-    "󰐎 Toggle" "󰒭 Next" " Repeat" \
-    " Pick music" "󰀥 Pick album" "󰤺 Pick from queue" \
-    "󰃢 Clear queue" " Crop queue" | \
+    "󰐎 Toggle" "󰒭 Next" " Repeat" " Shuffle" "󰃢 Clear" " Crop"\
+    " Pick music" "󰀥 Pick album" "󰤺 Pick queue" \
+     | \
     rofi -dmenu -i \
     -theme-str "textbox{ content: \"$current_song\"; }" \
 )
@@ -96,11 +96,12 @@ case $action in
         ;;
     "󰒭 Next") mpc pause && mpc next && mpc play && notify-send -t 1000 " Playing $(mpc current)" ;;
     " Repeat") mpc repeat && notify-send -t 1000 " Repeat toggled" ;;
-    "󰃢 Clear queue") mpc clear && notify-send -t 1000 " Music queue cleared" ;;
-    " Crop queue") mpc crop && notify-send -t 1000 " Music queue cropped" ;;
+    "󰃢 Clear") mpc clear && notify-send -t 1000 " Music queue cleared" ;;
+    " Crop") mpc crop && notify-send -t 1000 " Music queue cropped" ;;
     " Pick music") pick_music ;;
     "󰀥 Pick album") pick_album ;;
     "󰤺 Pick from queue") picom_from_queue ;;
+    " Shuffle") mpc shuffle && notify-send -t 1000 " Music queue shuffled" ;;
     *) exit 0 ;;
 esac
 
