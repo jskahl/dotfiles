@@ -1,12 +1,13 @@
 @import "/home/j/.config/rofi/themes/current.rasi"
 
 * {
-    font: "JetBrainsMono Nerd Font 15";
+    font: "JetBrainsMono Nerd Font Bold 14";
+    selected: #FF0000;
 }
 
 
 window {
-    width: 942px;
+    width: 852px;
     height: 500px;
     background-color: @background;
     border: 0;
@@ -16,7 +17,13 @@ window {
 mainbox {
     spacing: 15px;
     padding: 30px;
+    orientation: vertical;
+    children: [ "textbox", "lowerbox" ];
+}
+
+lowerbox {
     orientation: horizontal;
+    spacing: 15px;
     children: [ "imagebox", "rightbox" ];
 }
 
@@ -28,7 +35,7 @@ imagebox {
 
 rightbox {
     orientation: vertical;
-    children: ["textbox", "inputbar", "listview"];
+    children: ["inputbar", "listview"];
     spacing: 10px;
 }
 
