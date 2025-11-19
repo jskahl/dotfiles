@@ -9,17 +9,20 @@ yt-dlp -x \
     -o "%(title)s.%(ext)s" \
     --newline "$1" 2>&1 |
 while IFS= read -r line; do
-    # Extract percentage (like "42.3%")
-    percent=$(echo "$line" | sed -n 's/.*\([0-9]\{1,3\}\)\.[0-9]%.*/\1/p')
-
+    # Extract percentage (handles 42%, 42.3%, 100%)
+    percent=$(echo "$line" | grep -oE '[0-9]{1,3}(\.[0-9])?%' | tr -d '%')
+    
     if [ -n "$percent" ]; then
+        # Strip decimal to satisfy int:value requirements
+        int_percent=${percent%.*}
+        
         dunstify \
             -a "yt-dlp" \
             -u low \
             -r "$bar_id" \
-            -h int:value:"$percent" \
+            -h int:value:"$int_percent" \
             "Downloading..." \
-            "${percent}%"
+            "$percent%"
     fi
 done
 
@@ -29,3 +32,4 @@ dunstify \
     -u normal \
     -r "$bar_id" \
     -h int:value:100 \
+    "Download complete" "100%"
