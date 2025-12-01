@@ -1,15 +1,20 @@
 return {
+
+    {
+        "mfussenegger/nvim-jdtls",
+        ft = { "java" },
+    },
     --	{
     --		"windwp/nvim-autopairs",
     --		event = "InsertEnter",
     --		config = true,
     --	},
 
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-    },
+    -- {
+    --      "lukas-reineke/indent-blankline.nvim",
+    --      main = "ibl",
+    --      opts = {},
+    -- },
 
     {
         "norcalli/nvim-colorizer.lua",
@@ -17,6 +22,18 @@ return {
 
     {
         "xiyaowong/transparent.nvim",
+
+        config = function()
+            require("transparent").setup({
+                enable = true,
+                extra_groups = {
+                    "NormalFloat",    -- Floating windows
+                    "NvimTreeNormal", -- Example plugin
+                    "Pmenu",          -- Popup menu
+                    "PmenuSel",       -- Selected item
+                },
+            })
+        end,
     },
     {
         "S1M0N38/love2d.nvim",
@@ -30,13 +47,14 @@ return {
     },
     {
         "github/copilot.vim",
+        event = "VeryLazy",
     },
     {
         {
             "m4xshen/hardtime.nvim",
             lazy = false,
             dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
-            opts = {notification = true},
+            opts = { notification = true },
         },
     },
 }

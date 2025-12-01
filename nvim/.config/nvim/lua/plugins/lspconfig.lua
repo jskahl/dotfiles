@@ -32,6 +32,8 @@ return {
             vim.lsp.config("pylsp", { capabilities = capabilities })
             vim.lsp.config("shfmt", { capabilities = capabilities })
             vim.lsp.config("vuels", { capabilities = capabilities })
+            vim.lsp.config("clangd", { capabilities = capabilities })
+            vim.lsp.config("jdtls", { capabilities = capabilities })
 
             -- Defines root of dir to find Vue LS
             local root = util.root_pattern("jsconfig.json", "package.json", ".git")(vim.fn.getcwd())

@@ -34,7 +34,7 @@ if vim.g.neovide then
     vim.g.neovide_padding_top = 5
     vim.g.neovide_normal_opacity=0
 
-    local default_font_size = 15
+    local default_font_size = 13
     local font_name = "JetBrainsMono Nerd Font:h13:b"
     vim.g.font_size = default_font_size
 

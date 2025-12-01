@@ -1,4 +1,4 @@
-local current_theme = "catppuccin"
+local current_theme = "matte"
 local current_tone = "dark"
 
 if current_tone == "dark" then
@@ -42,6 +42,12 @@ elseif current_theme == "tokyo" then
         vim.cmd.colorscheme("tokyonight-day")
     else
         vim.cmd.colorscheme("tokyonight")
+    end
+elseif current_theme == "matte" then
+    if current_tone == "light" then
+        vim.cmd.colorscheme("matteblack-light")
+    else
+        vim.cmd.colorscheme("matteblack")
     end
 end
 
