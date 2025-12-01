@@ -14,3 +14,7 @@ import = [
 [window]
 padding = { x = 10, y = 10 }
 opacity = 0.3
+decorations = "full"
+
+[env]
+TERM = "xterm-256color"
