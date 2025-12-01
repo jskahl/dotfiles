@@ -54,9 +54,10 @@ export PATH="$PATH:/home/j/.local/bin"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # --- Plugins (order matters!) ---
 source ~/.local/src/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.local/src/zsh-nvm-lazy-load/zsh-nvm-lazy-load.plugin.zsh
 source ~/.local/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-cat ~/notes/tasks.md
