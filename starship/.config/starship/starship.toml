@@ -35,7 +35,7 @@ $shell\
 $line_break\
 $character"""
 
-palette = "catppuccin"
+palette = "matte"
 
 add_newline = true
 
@@ -185,8 +185,8 @@ time2     = "#d20f39"
 # nord (cool, frozen)
 # ─────────────────────────
 [palettes.nord]
-bg        = "#2e3440"
-bg-darker = "#2e3440"
+bg        = "#1c2330"
+bg-darker = "#1c2330"
 fg        = "#eceff4"
 dir       = "#88C0D0"  # icy blue
 git       = "#b48ead"  # frost purple
@@ -201,6 +201,27 @@ dir       = "#88C0D0"
 git       = "#a27ba5"
 time      = "#8ca97e"
 time2     = "#bf616a"
+
+# ─────────────────────────
+# matte-black (dark)
+# ─────────────────────────
+[palettes.matte]
+bg        = "#0d0d0d"
+bg-darker = "#0d0d0d"
+fg        = "#bebebe"
+dir       = "#e68e0d"   # warm orange (your blue)
+git       = "#D35F5F"   # red
+time      = "#8a8a8d"   # dim gray
+time2     = "#FFC107"   # yellow highlight
+
+[palettes.matte-light]
+bg        = "#e6e6e6"
+bg-darker = "#e6e6e6"
+fg        = "#3a3a3a"
+dir       = "#FFC107"   # blue highlight
+git       = "#c0392b"   # red
+time      = "#6a6a6a"   # soft gray
+time2     = "#c79a00"   # warm yellow
 
 # ─────────────────────────
 # gruvbox (warm, retro)
@@ -227,8 +248,8 @@ time2     = "#8f3f71"
 # tokyo night (vivid neon)
 # ─────────────────────────
 [palettes.tokyo]
-bg        = "#1a1b26"
-bg-darker = "#1a1b26"
+bg        = "#090a15"
+bg-darker = "#090a15"
 fg        = "#a9b1d6"
 dir       = "#9D7CD8"  # neon lime
 git       = "#ad8ee6"  # neon purple
@@ -243,4 +264,3 @@ dir       = "#9854f1"
 git       = "#9854f1"
 time      = "#2e7de9"
 time2     = "#f52a65"
-

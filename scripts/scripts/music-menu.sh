@@ -100,7 +100,7 @@ case $action in
     " Crop") mpc crop && notify-send -t 1000 " Music queue cropped" ;;
     " Pick music") pick_music ;;
     "󰀥 Pick album") pick_album ;;
-    "󰤺 Pick from queue") picom_from_queue ;;
+    "󰤺 Pick queue") picom_from_queue ;;
     " Shuffle") mpc shuffle && notify-send -t 1000 " Music queue shuffled" ;;
     *) exit 0 ;;
 esac

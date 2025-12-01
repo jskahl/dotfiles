@@ -58,6 +58,10 @@ changetheme() {
             CurrentNewTheme="gruvbox"
             CurrentTheme="gruvbox"
             echo "gruvbox" > $HOME/.cache/current-theme;;
+        matte) 
+            CurrentNewTheme="matte"
+            CurrentTheme="matte"
+            echo "matte" > $HOME/.cache/current-theme;;
         *) 
             echo "Tema não conhecido"    
             exit 0;;
@@ -95,6 +99,9 @@ makechanges() {
         # Change rofi theme
         cat $HOME/.config/rofi/themes/$1.rasi > $HOME/.config/rofi/themes/current.rasi
 
+        # Change kitty theme
+        cat $HOME/.config/kitty/themes/$1.conf > $HOME/.config/kitty/themes/current.conf
+
         # Restart i3
         i3-msg restart > /dev/null
 
@@ -125,6 +132,9 @@ makechanges() {
 
         # Change rofi theme
         cat $HOME/.config/rofi/themes/$1-light.rasi > $HOME/.config/rofi/themes/current.rasi
+
+        # Change kitty theme
+        cat $HOME/.config/kitty/themes/$1-light.conf > $HOME/.config/kitty/themes/current.conf
 
         # Restart i3
         i3-msg restart > /dev/null

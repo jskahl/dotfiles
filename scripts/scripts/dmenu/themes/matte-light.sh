@@ -1,0 +1,5 @@
+DMENU_NB="#f2f2f2"
+DMENU_NF="#3a3a3a"
+DMENU_SB="#FFC107"
+DMENU_SF="#6c6c6c"
+DMENU_FONT="JetBrainsMono Nerd Font-15"

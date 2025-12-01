@@ -1,0 +1,5 @@
+* {
+    background: #121212DD;
+    foreground: #e68e0d;
+    text-color: #cdcdcd;
+}

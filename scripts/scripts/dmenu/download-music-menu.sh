@@ -1,6 +1,5 @@
 #!/bin/sh
 
-sudo
 music_dir="/home/j/media/HDD/musics"
 
 . "/home/j/scripts/dmenu/themes/current.sh"
@@ -57,7 +56,7 @@ function download_music() {
 
 dir_exists=$(ls "$music_dir/$directory")
 if [ -z "$dir_exists" ]; then
-    mkdir "$music_dir/$directory" -p
+    mkdir -p "$music_dir/$directory"
     download_music "$link_provided"
 else
     download_music "$link_provided"

@@ -3,6 +3,7 @@
 # Defines picom.conf path
 picom="/home/j/.config/picom/picom.conf"
 alacritty="/home/j/.config/alacritty/alacritty.toml"
+kitty="/home/j/.config/kitty/kitty.conf"
 
 # Uncomment active-opacity if it is commented in picom
 if grep -q '^#active-opacity' "$file"; then
@@ -20,4 +21,13 @@ if grep -q '^#opacity' "$alacritty"; then
 # Comment opacity if it is uncommented in alacritty
 elif grep -q '^opacity' "$alacritty"; then
     sed -i 's/^opacity/#opacity/' "$alacritty"
+fi
+
+# Uncomment opacity if it is commented in kitty
+if grep -q '^#background_opacity' "$kitty"; then
+    sed -i 's/^#background_opacity/background_opacity/' "$kitty"
+
+# Comment opacity if it is uncommented in kitty
+elif grep -q '^background_opacity' "$kitty"; then
+    sed -i 's/^background_opacity/#background_opacity/' "$kitty"
 fi

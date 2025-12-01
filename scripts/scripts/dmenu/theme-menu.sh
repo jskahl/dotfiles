@@ -5,7 +5,7 @@
  
 input=$(
     printf "%s\n" \
-    "󰨷 tokyo" " osaka" "󰇈 gruvbox" "󰄛 catppuccin" "󰜗 nord" \
+    "󰶞 matte" "󰨷 tokyo" " osaka" "󰇈 gruvbox" "󰄛 catppuccin" "󰜗 nord" \
     " dark" " light" \
     | \
     . "$HOME/scripts/dmenu/dmenu.sh" \
@@ -21,6 +21,7 @@ change_theme() {
 
 # Execute selected action
 case "$input" in
+    "󰶞 matte") change_theme "matte" ;;
     "󰨷 tokyo") change_theme "tokyo" ;;
     " osaka") change_theme "osaka" ;;
     "󰇈 gruvbox") change_theme "gruvbox" ;;

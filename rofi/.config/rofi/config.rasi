@@ -7,7 +7,7 @@
 
 
 window {
-    width: 852px;
+    width: 800px;
     height: 500px;
     background-color: @background;
     border: 0;
@@ -52,13 +52,13 @@ textbox {
     content: "";
     text-color: #FFFFFF;
     expand: false;
-    padding: 2px 2px;
+    padding: 0px 2px;
     text-color: @text-color;
 }
 
 
 inputbar {
-    padding: 8px 0px;
+    padding: 2px 0px;
     children: ["entry"];
 }
 
