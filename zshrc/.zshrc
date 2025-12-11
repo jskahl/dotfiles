@@ -23,7 +23,7 @@ bindkey '^[[B' history-beginning-search-forward
 # Aliases
 
     # Substitions
-    alias neofetch="neofetch --source '$HOME/.config/neofetch/asciis/knight.txt'"
+    alias neofetch="neofetch --source '$HOME/.config/neofetch/asciis/energia.txt'"
     alias shutdown="poweroff"
     alias rmdir="rm -rf"
     alias ls="lsd"
