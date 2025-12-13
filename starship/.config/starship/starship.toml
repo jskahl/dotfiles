@@ -35,7 +35,7 @@ $shell\
 $line_break\
 $character"""
 
-palette = "nord"
+palette = "osaka"
 
 add_newline = true
 

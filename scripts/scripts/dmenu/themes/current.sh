@@ -1,5 +1,5 @@
-DMENU_NB="#1c2330"
-DMENU_NF="#d8dee9"
-DMENU_SB="#88c0d0"
-DMENU_SF="#1c2330"
+DMENU_NB="#0b0f10"     # deep black/green background
+DMENU_NF="#c5d5c5"     # light jade-ish text
+DMENU_SB="#2bbf85"     # jade green accent
+DMENU_SF="#0b0f10"     # selected text
 DMENU_FONT="JetBrainsMono Nerd Font-15"
