@@ -8,12 +8,16 @@ while pgrep -u "$UID" -x polybar >/dev/null; do
   sleep 0.1
 done
 
+polybar -q ws -c "$DIR/config.ini" &
 # Detect connected monitors
 MONITORS=$(polybar --list-monitors | cut -d":" -f1)
-
+#
 for m in $MONITORS; do
+#    MONITOR=$m polybar -q js -c "$DIR/config.ini" &
+  MONITOR=$m polybar -q bg -c "$DIR/config.ini" &
   MONITOR=$m polybar -q ws -c "$DIR/config.ini" &
   MONITOR=$m polybar -q date -c "$DIR/config.ini" &
   MONITOR=$m polybar -q laptop -c "$DIR/config.ini" &
   MONITOR=$m polybar -q hw -c "$DIR/config.ini" &
+  MONITOR=$m polybar -q timer -c "$DIR/config.ini" &
 done
