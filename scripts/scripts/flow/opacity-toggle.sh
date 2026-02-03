@@ -6,12 +6,12 @@ alacritty="/home/j/.config/alacritty/alacritty.toml"
 kitty="/home/j/.config/kitty/kitty.conf"
 
 # Uncomment active-opacity if it is commented in picom
-if grep -q '^#active-opacity' "$file"; then
-    sed -i 's/^#active-opacity/active-opacity/' "$file"
+if grep -q '^#active-opacity' "$picom"; then
+    sed -i 's/^#active-opacity/active-opacity/' "$picom"
 
 # Comment active-opacity if it is uncommented in picom
-elif grep -q '^active-opacity' "$file"; then
-    sed -i 's/^active-opacity/#active-opacity/' "$file"
+elif grep -q '^active-opacity' "$picom"; then
+    sed -i 's/^active-opacity/#active-opacity/' "$picom"
 fi
 
 # Uncomment opacity if it is commented in alacritty
