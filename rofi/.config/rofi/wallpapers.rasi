@@ -1,0 +1,39 @@
+@import "themes/current.rasi"
+
+configuration {
+    show-icons: true;
+    display-dmenu: "";
+    no-input: true;
+}
+
+listview {
+    columns: 3;
+    lines: 3;
+    fixed-columns: true;
+}
+
+element {
+    orientation: vertical;
+    padding: 5px;
+}
+
+element-icon {
+    size: 200px;
+}
+
+element-text {
+    enabled: false;
+}
+
+format {
+    value: "{icon}";
+}
+
+inputbar {
+    enabled: false;
+}
+
+window {
+    border: 0px;
+    border-color: transparent;
+}

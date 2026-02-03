@@ -1,5 +1,81 @@
+/* Pywal Rofi Theme — Flat / Borderless */
+
 * {
-    background: #0b0f10DD;
-    foreground: #2bbf85;
-    text-color: #c5d5c5;
+    background:     #0C1732;
+    foreground:     #c6cbe6;
+    selected:       #827CB4;
+    active:         #768DC9;
+    urgent:         #5E7AC4;
+
+    bg:             #0C1732;
+    fg:             #c6cbe6;
+    bg-alt:         #0C1732;
+    fg-alt:         #c6cbe6;
+
+    border-color:   transparent;
+    separatorcolor: transparent;
+
+    font: "JetBrains Mono 11";
+}
+
+window {
+    background-color: @bg;
+    border: 0px;
+    padding: 5px;
+}
+
+mainbox {
+    background-color: transparent;
+    padding: 0px;
+}
+
+inputbar {
+    background-color: transparent;
+    text-color: @fg;
+    padding: 0px;
+}
+
+prompt {
+    text-color: @fg;
+}
+
+entry {
+    text-color: @fg;
+    background-color: transparent;
+}
+
+listview {
+    background-color: transparent;
+    spacing: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+element {
+    orientation: vertical;
+    padding: 0px;
+    margin: 0px;
+    background-color: transparent;
+}
+
+element-icon {
+    size: 200px;
+    background-color: @bg;
+    border-radius: 5px;
+}
+
+element selected {
+    background-color: @selected;
+    border-radius: 5px;
+}
+
+element active,
+element urgent {
+    background-color: transparent;
+}
+
+scrollbar {
+    background-color: transparent;
+    handle-color: @selected;
+    border: 0px;
 }
