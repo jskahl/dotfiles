@@ -38,6 +38,7 @@ bindkey '^[[B' history-beginning-search-forward
     alias dmusic="$HOME/scripts/download-music.sh"
     alias swpp="$HOME/scripts/theme/set-wallpaper.sh"
     alias ai-search="$HOME/scripts/search-with-ai.sh"
+    alias bw="flatpak run --command=bw com.bitwarden.desktop"
 
 
 # Starship
