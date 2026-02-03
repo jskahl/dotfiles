@@ -35,7 +35,7 @@ $shell\
 $line_break\
 $character"""
 
-palette = "osaka"
+palette = 'pywal'
 
 add_newline = true
 
@@ -264,3 +264,136 @@ dir       = "#9854f1"
 git       = "#9854f1"
 time      = "#2e7de9"
 time2     = "#f52a65"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[palettes.pywal]
+bg        = "#0C1732"
+bg-darker = "#0C1732"
+fg        = "#c6cbe6"
+dir       = "#5E7AC4"
+git       = "#5E7AC4"
+time      = "#768DC9"
+time2     = "#7692DF"
