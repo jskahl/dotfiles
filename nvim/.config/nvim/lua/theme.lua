@@ -1,4 +1,4 @@
-local current_theme = "matte"
+local current_theme = "nord"
 local current_tone = "dark"
 
 if current_tone == "dark" then
