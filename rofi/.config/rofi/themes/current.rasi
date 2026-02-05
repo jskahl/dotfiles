@@ -1,16 +1,16 @@
 /* Pywal Rofi Theme — Flat / Borderless */
 
 * {
-    background:     #0C1732;
-    foreground:     #c6cbe6;
-    selected:       #827CB4;
-    active:         #768DC9;
-    urgent:         #5E7AC4;
+    background:     #0A1017;
+    foreground:     #b3c6d8;
+    selected:       #3F607F;
+    active:         #3F6081;
+    urgent:         #36506B;
 
-    bg:             #0C1732;
-    fg:             #c6cbe6;
-    bg-alt:         #0C1732;
-    fg-alt:         #c6cbe6;
+    bg:             #0A1017;
+    fg:             #b3c6d8;
+    bg-alt:         #0A1017;
+    fg-alt:         #b3c6d8;
 
     border-color:   transparent;
     separatorcolor: transparent;

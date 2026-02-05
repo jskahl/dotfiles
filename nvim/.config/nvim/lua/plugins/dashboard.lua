@@ -10,13 +10,25 @@ return {
                 project = { enable = false }, -- disable recent projects
                 mru = { enable = false }, -- disable recent files
                 packages = { enable = false }, -- disable lazy packages info
+
                 header = {
-                    "                                                                     ",
-                    "   ██ ██  ██ ▄█████ ██████   ▄█████ ▄████▄ ████▄  ██████   ██ ██████ ",
-                    "   ██ ██  ██ ▀▀▀▄▄▄   ██     ██     ██  ██ ██  ██ ██▄▄     ██   ██   ",
-                    "████▀ ▀████▀ █████▀   ██     ▀█████ ▀████▀ ████▀  ██▄▄▄▄   ██   ██   ",
-                    "                                                                     ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    "neovim",
+                    " ",
                 },
+--                center = {
+--                    {
+--                        desc = "Welcome to Neovim",
+--                    },
+--                },
+                footer = {},
             },
         })
     end,

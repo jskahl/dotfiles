@@ -389,11 +389,13 @@ time2     = "#f52a65"
 
 
 
+
+
 [palettes.pywal]
-bg        = "#0C1732"
-bg-darker = "#0C1732"
-fg        = "#c6cbe6"
-dir       = "#5E7AC4"
-git       = "#5E7AC4"
-time      = "#768DC9"
-time2     = "#7692DF"
+bg        = "#0A1017"
+bg-darker = "#0A1017"
+fg        = "#b3c6d8"
+dir       = "#36506B"
+git       = "#36506B"
+time      = "#3F6081"
+time2     = "#517294"
