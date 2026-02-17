@@ -12,23 +12,14 @@ return {
         local telescope = require("telescope")
 
         -- Keymaps
-        vim.keymap.set("n", "<leader>ff", builtin.find_files, {})    -- Lists files inside dir
-        vim.keymap.set("n", "<leader>fg", builtin.git_files, {})     -- Lists only git files inside dir
+        vim.keymap.set("n", "<leader>ff", builtin.find_files, {}) -- Lists files inside dir
+        vim.keymap.set("n", "<leader>fg", builtin.git_files, {}) -- Lists only git files inside dir
         vim.keymap.set("n", "<leader><leader>", builtin.buffers, {}) -- Lists current opened buffers
         vim.keymap.set("n", "<leader>fc", function()
-            builtin.find_files({ cwd = vim.fn.stdpath("config") })   -- Lists NeoVim config's files
+            builtin.find_files({ cwd = vim.fn.stdpath("config") }) -- Lists NeoVim config's files
         end)
         vim.keymap.set("n", "<leader>fw", function()
-            builtin.grep_string({ search = vim.fn.input("Grep > ") }) -- Lists files by name
-        end)
-        vim.keymap.set("n", "<leader>fn", function()
-            if vim.fn.getcwd() == "/home/j" then
-                vim.cmd("cd ~/notes")
-            end
-            builtin.find_files({ cwd = "~/notes" })
-        end)
-        vim.keymap.set("n", "<leader>gc", function ()
-            builtin.find_files({ cwd = "~/dotfiles" })
+            builtin.grep_string({ search = vim.fn.input("Grep > ") }) -- Lists files by string inside file
         end)
 
         telescope.setup({
@@ -39,7 +30,7 @@ return {
                     results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                     preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                 },
-                initial_mode = "normal"
+                initial_mode = "normal",
             },
         })
     end,

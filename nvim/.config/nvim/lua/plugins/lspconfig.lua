@@ -21,10 +21,30 @@ return {
             local util = require("lspconfig.util")
             local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+            local servers = {
+                "html",
+                "cssls",
+                "jsonls",
+                "ast_grep",
+                "eslint",
+                "pylint",
+                "pylsp",
+                "shfmt",
+                "vuels",
+                "clangd",
+                "jdtls",
+                "tinymist",
+            }
+
+            for _, server in ipairs(servers) do
+                vim.lsp.config(server, {
+                    capabilities = capabilities,
+                })
+
+                vim.lsp.enable(server)
+            end
+
             -- Configure general LSP's
-            vim.lsp.config("html", { capabilities = capabilities })
-            vim.lsp.config("cssls", { capabilities = capabilities })
-            vim.lsp.config("jsonls", { capabilities = capabilities })
             vim.lsp.config("lua_ls", {
                 capabilities = capabilities,
                 settings = {
@@ -35,14 +55,6 @@ return {
                     },
                 },
             })
-            vim.lsp.config("ast_grep", { capabilities = capabilities })
-            vim.lsp.config("eslint", { capabilities = capabilities })
-            vim.lsp.config("pylint", { capabilities = capabilities })
-            vim.lsp.config("pylsp", { capabilities = capabilities })
-            vim.lsp.config("shfmt", { capabilities = capabilities })
-            vim.lsp.config("vuels", { capabilities = capabilities })
-            vim.lsp.config("clangd", { capabilities = capabilities })
-            vim.lsp.config("jdtls", { capabilities = capabilities })
 
             -- Defines root of dir to find Vue LS
             local root = util.root_pattern("jsconfig.json", "package.json", ".git")(vim.fn.getcwd())
