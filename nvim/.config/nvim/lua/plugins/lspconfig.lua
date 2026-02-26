@@ -24,6 +24,7 @@ return {
             local servers = {
                 "html",
                 "cssls",
+                "clang",
                 "jsonls",
                 "ast_grep",
                 "eslint",
@@ -34,6 +35,7 @@ return {
                 "clangd",
                 "jdtls",
                 "tinymist",
+                "marksman",
             }
 
             for _, server in ipairs(servers) do

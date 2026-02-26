@@ -1,6 +1,7 @@
 return {
     { "norcalli/nvim-colorizer.lua" }, -- Color highlighter
     { "vyfor/cord.nvim" }, -- Discord Rich Presence
+    {"mfussenegger/nvim-jdtls"}, -- Java LSP
 
     {
         "xiyaowong/transparent.nvim",
