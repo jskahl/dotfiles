@@ -2,6 +2,7 @@ return {
     { "norcalli/nvim-colorizer.lua" }, -- Color highlighter
     { "vyfor/cord.nvim" }, -- Discord Rich Presence
     {"mfussenegger/nvim-jdtls"}, -- Java LSP
+    {"barrettruth/live-server.nvim"}, -- HTML server 
 
     {
         "xiyaowong/transparent.nvim",
@@ -9,9 +10,7 @@ return {
             require("transparent").setup({
                 enable = true,
                 extra_groups = {
-                    "NormalFloat", -- Floating windows
                     "NvimTreeNormal", -- Example plugin
-                    "Pmenu", -- Popup menu
                     "PmenuSel", -- Selected item
                 },
             })
