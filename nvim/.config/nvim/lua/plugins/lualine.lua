@@ -4,20 +4,20 @@ return {
 
     config = function()
         require("lualine").setup({
-            options = {
+            --options = {
 
-                section_separators = { left = "", right = "" },
-                component_separators = { left = "", right = "" },
-            },
+            --    section_separators = { left = "", right = "" },
+            --    component_separators = { left = "", right = "" },
+            --},
 
-            sections = {
-                lualine_a = { "mode" },
-                lualine_b = { "branch" },
-                lualine_c = { "filename" },
-                lualine_x = { "fileformat" },
-                lualine_y = { "progress" },
-                lualine_z = { "location" },
-            },
+            --sections = {
+            --    lualine_a = { "mode" },
+            --    lualine_b = { "branch" },
+            --    lualine_c = { "filename" },
+            --    lualine_x = { "fileformat" },
+            --    lualine_y = { "progress" },
+            --    lualine_z = { "location" },
+            --},
         })
     end,
 }

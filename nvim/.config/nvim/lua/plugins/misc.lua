@@ -9,10 +9,6 @@ return {
         config = function()
             require("transparent").setup({
                 enable = true,
-                extra_groups = {
-                    "NvimTreeNormal", -- Example plugin
-                    "PmenuSel", -- Selected item
-                },
             })
         end,
     },
