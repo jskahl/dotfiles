@@ -96,6 +96,7 @@ return {
                             "vue",
                             "svelte",
                             "heex",
+                            "erb",
                         },
                     })
                 end,
