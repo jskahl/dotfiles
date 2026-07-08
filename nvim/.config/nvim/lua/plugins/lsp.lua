@@ -34,6 +34,10 @@ return {
             cmp_lsp.default_capabilities()
         )
 
+        require("luasnip.loaders.from_lua").load({
+            paths = { vim.fn.stdpath("config") .. "/lua/snippets" },
+        })
+
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -43,6 +47,7 @@ return {
                 "gopls",
                 "vtsls",
                 "tailwindcss",
+                -- "basedpyright",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -50,6 +55,24 @@ return {
                         capabilities = capabilities,
                     })
                 end,
+
+                -- ["basedpyright"] = function()
+                --     local lspconfig = require("lspconfig")
+                --     lspconfig.basedpyright.setup({
+                --         capabilities = capabilities,
+                --         settings = {
+                --             basedpyright = {
+                --                 analysis = {
+                --                     autoSearchPaths = true,
+                --                     useLibraryCodeForTypes = true,
+                --                     diagnosticMode = "workspace",
+                --                     venvPath = ".",
+                --                     venv = ".venv",
+                --                 },
+                --             },
+                --         },
+                --     })
+                -- end,
 
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -81,6 +104,7 @@ return {
                         },
                     })
                 end,
+
                 ["tailwindcss"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.tailwindcss.setup({
@@ -241,7 +265,7 @@ return {
 
             window = {
                 completion = { border = "rounded" },
-                documentation = { border = "rounded" }
+                documentation = { border = "rounded" },
             },
 
             snippet = {
@@ -256,6 +280,20 @@ return {
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-Space>"] = cmp.mapping.complete(),
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if require("luasnip").jumpable(1) then
+                        require("luasnip").jump(1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if require("luasnip").jumpable(-1) then
+                        require("luasnip").jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
             }),
             sources = cmp.config.sources({
                 { name = "luasnip" },
