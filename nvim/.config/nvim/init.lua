@@ -5,5 +5,6 @@ require("jskahl.commands")
 require("jskahl.neovide")
 require("jskahl.cmp")
 
-vim.cmd("colorscheme ethereal")
---vim.o.background = "dark"
+vim.cmd("colorscheme tokyonight-moon")
+--vim.o.background = "light"
+--
